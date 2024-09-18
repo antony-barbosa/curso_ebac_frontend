@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const followingElement = document.querySelector('#following');
     const linkElement = document.querySelector('#link');
 
-    fetch('htpps://api.github.com/users/antony-barbosa')
+    fetch('https://api.github.com/users/antony-barbosa')
         .then(function(res){
             return res.json();
         })
@@ -27,9 +27,15 @@ document.addEventListener('DOMContentLoaded', function(){
             followersElement.innerText = followers.length;
         });
 
-        fetch('https://api.github.com/users/antony-barbosa/followers')
+        fetch('https://api.github.com/users/antony-barbosa/following')
         .then(res => res.json())
         .then(following => {
             followingElement.innerText = following.length;
+        });
+
+        fetch('https://api.github.com/users/antony-barbosa/repos')
+        .then(res => res.json())
+        .then(repos => {
+            reposElement.innerText = repos.length;
         });
 })
